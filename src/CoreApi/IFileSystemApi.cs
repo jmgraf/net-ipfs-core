@@ -108,6 +108,28 @@ namespace Ipfs.CoreApi
         Task<String> ReadAllTextAsync(string path, CancellationToken cancel = default(CancellationToken));
 
         /// <summary>
+        ///   Reads the content of an existing IPFS file as text.
+        /// </summary>
+        /// <param name="path">
+        ///   A path to an existing file, such as "QmXarR6rgkQ2fDSHjSY5nM2kuCXKYGViky5nohtwgF65Ec/about"
+        ///   or "QmZTR5bcpQD7cFgTorqxZDYaew1Wqgfbd2ud9QqGPAkK2V"
+        /// </param>
+        /// <param name="host">
+        ///   Set a host to override the base ApiUrl
+        /// </param>
+        /// <param name="cancel">
+        ///   Is used to stop the task.  When cancelled, the <see cref="TaskCanceledException"/> is raised.
+        /// </param>
+        /// <returns>
+        ///   A task that represents the asynchronous operation. The task's value is
+        ///   the contents of the <paramref name="path"/> as a <see cref="string"/>.
+        /// </returns>
+        Task<String> ReadAllTextHostAsync(
+            string path,
+            string host,
+            CancellationToken cancel = default(CancellationToken));
+
+        /// <summary>
         ///   Reads an existing IPFS file.
         /// </summary>
         /// <param name="path">
@@ -151,6 +173,27 @@ namespace Ipfs.CoreApi
         ///   The returned <see cref="Stream"/> must be disposed.
         /// </remarks>
         Task<Stream> ReadFileAsync(string path, long offset, long count = 0, CancellationToken cancel = default(CancellationToken));
+
+        /// <summary>
+        ///   Opens an existing IPFS file for reading.
+        /// </summary>
+        /// <param name="path">
+        ///   A path to an existing file, such as "QmXarR6rgkQ2fDSHjSY5nM2kuCXKYGViky5nohtwgF65Ec/about"
+        ///   or "QmZTR5bcpQD7cFgTorqxZDYaew1Wqgfbd2ud9QqGPAkK2V"
+        /// </param>
+        /// <param name="host">
+        ///   Set a host to override the base ApiUrl
+        /// </param>
+        /// <param name="cancel">
+        ///   Is used to stop the task.  When cancelled, the <see cref="TaskCanceledException"/> is raised.
+        /// </param>
+        /// <returns>
+        ///   A <see cref="Stream"/> to the file contents.
+        /// </returns>
+        Task<Stream> ReadFileHostAsync(
+            string path,
+            string host,
+            CancellationToken cancel = default(CancellationToken));
 
         /// <summary>
         ///   Get information about the file or directory.
